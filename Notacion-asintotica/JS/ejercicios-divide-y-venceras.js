@@ -69,9 +69,9 @@ const conteoRegresivo = (a) =>{
 }
 conteoRegresivo(10); */
 
-let array = [14, 7, 3, 12, 9, 11, 6, 2];
 
-function ordenarArray(array){
+
+/* function ordenarArray(array){
   if(array.length < 1){
     return array;
   }else{
@@ -84,4 +84,57 @@ function ordenarArray(array){
   return
 }
 
-console.log(ordenarArray(array, 0, array.length -1));
+console.log(ordenarArray(array, 0, array.length -1)); */
+const array = [14, 7, 3, 12, 9, 11, 6, 2];
+
+function mergeaa (A,p,q,r){
+  let izquierda = A.slice(p,q);
+  let derecha = A.slice(q+1, r);
+
+  let i = 0, j = 0, k = p;
+
+  while(k < r && i < izquierda.length && j < derecha.length){
+    console.log(izquierda[i], derecha[j])
+    if(izquierda[i] > derecha[j]){
+      A[k] = derecha[j];
+    }else{
+      A[k] = izquierda[j]
+      i++;
+    }
+  }
+}
+
+function merge(array, init, half, end){
+  let left = array.slice(init, half);
+  let rigth = array.slice(half, end);
+  console.log(left, rigth);
+  
+  let i = 0, j = 0, k = init;
+  let aux;
+  
+  while(k < end && i < left.length && j < rigth.length){
+    console.log('------'+left, rigth);
+    if(left[i] > rigth[j]){
+      aux = array[k];
+      array[k] = rigth[j];
+      j+=1;
+    }else{
+      aux = array[k];
+      array[k] = left[j];
+      i+=1;
+    }
+    k+=1;
+    console.log(array)
+  }
+}
+
+function divideAndConquer(array, init, end){
+  console.log("observando: ", array.slice(init, end));
+  if((init < end) && (end-init != 1)){  
+    let half = Math.floor((init + end)/2);
+    divideAndConquer(array, init, half);
+    divideAndConquer(array, half, end);
+    merge(array, init, half, end);
+  }
+}
+divideAndConquer(array, 0, array.length);
