@@ -13,7 +13,7 @@ const mergeSort = arr => {
     while (il < left.length && ir < right.length) {
       result.push( (left[il] < right[ir]) ? left[il++] : right[ir++] );
     }
-
+    console.log(...result, ...left.slice(il), ...right.slice(ir));
     return [...result, ...left.slice(il), ...right.slice(ir)];
   }
 
@@ -21,6 +21,7 @@ const mergeSort = arr => {
 }
 
 const arr = [10, 4, 40, 32, 67, 12, 43, 31, 65, 1];
+
 const result = mergeSort(arr);
 
 const x1 = [1,2,3,4];
