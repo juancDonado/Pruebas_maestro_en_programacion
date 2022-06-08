@@ -9,8 +9,27 @@ let res = distanciaAlOrigen(a,b);
 console.log(res);
 
 
-function engrosar(n){
-  if(n < 10){
-    return n;
+//Engrosar
+
+function maximo(a, b){
+  if(a >= b) return a;
+  else return b;
+}
+ 
+function fatten(x){
+  if(x < 10){
+    return x;
+  }else{
+    let n = x % 10;
+    let fn = fatten(x/10) % 10;
+    let valor = maximo(n, fn);
+    return 10 * fatten(x/10) + valor;
   }
 }
+
+while (a = prompt('Digita un valor')){
+  console.log(fatten(a));
+}
+
+/* 
+const array = new Array(a)(b); */
